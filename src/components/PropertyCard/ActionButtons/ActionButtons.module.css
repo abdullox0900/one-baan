@@ -1,0 +1,81 @@
+.actions {
+    display: grid;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.actions--horizontal {
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.actions--large {
+    grid-template-columns: 1fr 5fr;
+}
+
+.actions--small {
+    grid-template-columns: 1fr 5fr;
+}
+
+.actions--medium {
+    grid-template-columns: 1fr 5fr;
+}
+
+.actions--large-horizontal {
+    grid-template-columns: 1fr 1fr;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex: 1;
+    text-decoration: none;
+    text-align: center;
+}
+
+.actions--large-horizontal .button {
+    padding: 18px 20px;
+    font-size: 12px;
+}
+
+.actions--large-horizontal .whatsappButton {
+    font-size: 15px;
+}
+
+.whatsappButton {
+    background: #C6F6D5;
+    color: green;
+}
+
+.whatsappButton:hover {
+    background: #38A169;
+    color: white;
+}
+
+.contactButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #EDF2F7;
+    color: #2D3748;
+}
+
+.button svg {
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .actions--large-horizontal .button {
+        padding: 10px;
+        font-size: 12px;
+    }
+}
