@@ -1,10 +1,12 @@
+import clsx from 'clsx'
 import React from 'react'
 import PhoneIcon from '../../../assets/icons/call-icon.svg'
-import type { Property, PropertyCardVariant } from '../../../types/property'
+import { t } from '../../../i18n/translations'
+import type { PropertyCardVariant, PropertyContact } from '../../../types/property'
 import styles from './ActionButtons.module.css'
 
 interface ActionButtonsProps {
-    property: Property
+    contact: PropertyContact
     variant: PropertyCardVariant
     onWhatsAppClick: () => void
     onContactClick: () => void
@@ -12,81 +14,51 @@ interface ActionButtonsProps {
 }
 
 export const ActionButtons: React.FC<ActionButtonsProps> = ({
-    property,
+    contact,
     variant,
     onWhatsAppClick,
     onContactClick,
     phone
 }) => {
+    // Skip rendering for horizontal variant which doesn't have action buttons
+    if (variant === 'horizontal') {
+        return null
+    }
+
     return (
-        <>
-            {variant === 'small' || variant === 'medium' || variant === 'large' ? (
-                <div className={`${styles.actions} ${styles[`actions--${variant}`]}`}>
-                    {property.contact.showContactSeller && (
-                        <a
-                            href={`tel:${phone}`}
-                            className={`${styles.button} ${styles.contactButton}`}
-                            onClick={(e) => {
-                                e.preventDefault()
-                                onContactClick()
-                            }}
-                        >
-                            <img src={PhoneIcon} alt="Phone" />
-                        </a>
+        <div className={clsx(styles.actions, styles[`actions--${variant}`])}>
+            {contact.showContactSeller && (
+                <a
+                    href={`tel:${phone}`}
+                    className={clsx(styles.button, styles.contactButton)}
+                    onClick={(e) => {
+                        e.preventDefault()
+                        onContactClick()
+                    }}
+                >
+                    {variant === 'large-horizontal' ? (
+                        <span>{t('contactSeller')}</span>
+                    ) : (
+                        <img src={PhoneIcon} alt="Phone" />
                     )}
-                    {property.contact.showWhatsApp && (
-                        <a
-                            href={`https://wa.me/${phone}`}
-                            className={`${styles.button} ${styles.whatsappButton} ${styles[`actions--${variant}`]}`}
-                            onClick={(e) => {
-                                e.preventDefault()
-                                onWhatsAppClick()
-                            }}
-                        >
-                            <span>WhatsApp</span>
-                        </a>
-                    )}
-                </div>
-            ) : (
-                <></>
+                </a>
             )}
-
-            {variant === 'large-horizontal' && (
-                <div className={`${styles.actions} ${styles[`actions--${variant}`]}`}>
-                    {property.contact.showContactSeller && (
-                        <a
-                            href={`tel:${phone}`}
-                            className={`${styles.button} ${styles.contactButton}`}
-                            onClick={(e) => {
-                                e.preventDefault()
-                                onContactClick()
-                            }}
-                        >
-                            <span>
-                                Связаться с продавцом
-                            </span>
-                        </a>
+            {contact.showWhatsApp && (
+                <a
+                    href={`https://wa.me/${phone}`}
+                    className={clsx(
+                        styles.button,
+                        styles.whatsappButton,
+                        variant !== 'large-horizontal' && styles[`actions--${variant}`]
                     )}
-                    {property.contact.showWhatsApp && (
-                        <a
-                            href={`https://wa.me/${phone}`}
-                            className={`${styles.button} ${styles.whatsappButton}`}
-                            onClick={(e) => {
-                                e.preventDefault()
-                                onWhatsAppClick()
-                            }}
-                        >
-                            <span>WhatsApp</span>
-                        </a>
-                    )}
-
-
-                </div>
+                    onClick={(e) => {
+                        e.preventDefault()
+                        onWhatsAppClick()
+                    }}
+                >
+                    <span>{t('whatsApp')}</span>
+                </a>
             )}
-
-            {variant === 'horizontal' && (
-                <></>
-            )}
-        </>
+        </div>
     )
 }

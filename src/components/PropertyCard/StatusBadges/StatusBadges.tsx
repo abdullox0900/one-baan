@@ -1,8 +1,10 @@
+import clsx from 'clsx'
 import React from 'react'
 import chairIcon from '../../../assets/icons/status/chair.svg'
 import checkIcon from '../../../assets/icons/status/check.svg'
 import dollarIcon from '../../../assets/icons/status/dollar.svg'
 import starIcon from '../../../assets/icons/status/one-baan.svg'
+import { t } from '../../../i18n/translations'
 
 import type { PropertyCardVariant, PropertyStatus } from '../../../types/property'
 import styles from './StatusBadges.module.css'
@@ -12,15 +14,24 @@ interface StatusBadgesProps {
     variant: PropertyCardVariant
 }
 
+type BadgeType = 'success' | 'primary' | 'warning' | 'info'
+
+interface Badge {
+    key: string
+    icon: React.ReactNode
+    text: string
+    type: BadgeType
+}
+
 export const StatusBadges: React.FC<StatusBadgesProps> = ({ status, variant }) => {
-    const badges = []
+    const badges: Badge[] = []
 
     if (status.isVerified) {
         badges.push({
             key: 'verified',
             icon: <img src={checkIcon} alt="check" />,
-            text: 'Объект проверен',
-            type: 'success' as const,
+            text: t('verified'),
+            type: 'success',
         })
     }
 
@@ -28,8 +39,8 @@ export const StatusBadges: React.FC<StatusBadgesProps> = ({ status, variant }) =
         badges.push({
             key: 'exclusive',
             icon: <img src={starIcon} alt="chair" />,
-            text: 'Только на OneBaan',
-            type: 'primary' as const,
+            text: t('exclusive'),
+            type: 'primary',
         })
     }
 
@@ -37,8 +48,8 @@ export const StatusBadges: React.FC<StatusBadgesProps> = ({ status, variant }) =
         badges.push({
             key: 'special-price',
             icon: <img src={dollarIcon} alt="star" />,
-            text: 'Выгодная цена',
-            type: 'warning' as const,
+            text: t('specialPrice'),
+            type: 'warning',
         })
     }
 
@@ -46,21 +57,19 @@ export const StatusBadges: React.FC<StatusBadgesProps> = ({ status, variant }) =
         badges.push({
             key: 'furnished',
             icon: <img src={chairIcon} alt="home" />,
-            text: 'С мебелью',
-            type: 'info' as const,
+            text: t('furnished'),
+            type: 'info',
         })
     }
-
-
 
     if (badges.length === 0) return null
 
     return (
-        <div className={`${styles.badges} ${styles[`badges--${variant}`]}`}>
+        <div className={clsx(styles.badges, styles[`badges--${variant}`])}>
             {badges.map((badge) => (
                 <div
                     key={badge.key}
-                    className={`${styles.badge} ${styles[`badge--${badge.type}`]}`}
+                    className={clsx(styles.badge, styles[`badge--${badge.type}`])}
                 >
                     {badge.icon}
                     <span>{badge.text}</span>

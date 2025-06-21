@@ -1,5 +1,6 @@
 'use client'
 
+import clsx from 'clsx'
 import { Heart, Share2 } from 'lucide-react'
 import React, { useState } from 'react'
 import type { Property, PropertyCardVariant } from '../../types/property'
@@ -50,10 +51,8 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({
         onContactClick?.(property.id)
     }
 
-    const cardClass = `${styles.card} ${styles[`card--${variant}`]} ${className}`
-
     return (
-        <div className={cardClass}>
+        <div className={clsx(styles.card, styles[`card--${variant}`], className)}>
             <div className={styles.imageContainer}>
                 <ImageGallery
                     images={property.images}
@@ -62,67 +61,53 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({
                     onIndexChange={setCurrentImageIndex}
                 />
 
-                {
-                    variant === 'large' || variant === 'small' || variant === 'medium' ? (
-                        <Avatar variant={variant} />
-                    ) : (
-                        <></>
-                    )
-                }
+                {(variant === 'large' || variant === 'small' || variant === 'medium') && (
+                    <Avatar variant={variant} />
+                )}
             </div>
 
-            <div className={`${styles.cardActions} ${styles[`cardActions--${variant}`]}`}>
+            <div className={clsx(styles.cardActions, styles[`cardActions--${variant}`])}>
                 <button
-                    className={`${styles.actionButton} ${styles[`cardActionsButton--${variant}`]} ${isFavorite ? styles.actionButtonActive : ''}`}
+                    className={clsx(
+                        styles.actionButton,
+                        styles[`cardActionsButton--${variant}`],
+                        isFavorite && styles.actionButtonActive
+                    )}
                     onClick={handleFavoriteClick}
                     aria-label="Add to favorites"
                 >
                     <Heart size={20} />
                 </button>
                 <button
-                    className={`${styles.actionButton} ${styles[`cardActionsButton--${variant}`]} ${styles[`actionButtonShare--${variant}`]}`}
+                    className={clsx(
+                        styles.actionButton,
+                        styles[`cardActionsButton--${variant}`],
+                        styles[`actionButtonShare--${variant}`]
+                    )}
                     onClick={handleShareClick}
                     aria-label="Share property"
                 >
                     <Share2 size={20} />
                 </button>
-                {
-                    variant === 'large-horizontal' || variant === 'horizontal' ? (
-                        <Avatar variant={variant} />
-                    ) : (
-                        <></>
-                    )
-                }
+                {(variant === 'large-horizontal' || variant === 'horizontal') && (
+                    <Avatar variant={variant} />
+                )}
             </div>
 
             <div className={styles.content}>
-                <Title variant={variant} title={property?.title} />
+                <Title variant={variant} title={property?.title} publishedDate={property.publishedDate} />
 
                 <PropertyInfo property={property} variant={variant} />
 
                 <StatusBadges status={property.status} variant={variant} />
 
-                {
-                    variant !== 'large-horizontal' && (
-                        <ActionButtons
-                            property={property}
-                            variant={variant}
-                            phone={property.contact.phone || ''}
-                            onWhatsAppClick={handleWhatsAppClick}
-                            onContactClick={handleContactClick}
-                        />
-                    )
-                } {
-                    variant === 'large-horizontal' && (
-                        <ActionButtons
-                            property={property}
-                            variant={variant}
-                            phone={property.contact.phone || ''}
-                            onWhatsAppClick={handleWhatsAppClick}
-                            onContactClick={handleContactClick}
-                        />
-                    )
-                }
+                <ActionButtons
+                    contact={property.contact}
+                    variant={variant}
+                    phone={property.contact.phone || ''}
+                    onWhatsAppClick={handleWhatsAppClick}
+                    onContactClick={handleContactClick}
+                />
             </div>
         </div>
     )

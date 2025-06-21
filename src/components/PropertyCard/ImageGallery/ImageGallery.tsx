@@ -1,6 +1,8 @@
 'use client'
 
+import clsx from 'clsx'
 import React from 'react'
+import { t } from '../../../i18n/translations'
 import type { PropertyCardVariant, PropertyImage } from '../../../types/property'
 import styles from './ImageGallery.module.css'
 
@@ -20,7 +22,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
     if (images.length === 0) {
         return (
             <div className={styles.placeholder}>
-                <span>No image available</span>
+                <span>{t('noImageAvailable')}</span>
             </div>
         )
     }
@@ -34,16 +36,17 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
             />
 
             {images.length > 1 && (
-                <div className={`${styles.indicators} ${styles[`indicators--${variant}`]}`}>
+                <div className={clsx(styles.indicators, styles[`indicators--${variant}`])}>
                     {images.map((_, index) => (
                         <button
                             key={index}
-                            className={`${styles.indicator} 
-                                ${styles[`indicator--${variant}`]} 
-                                ${index === currentIndex ? styles.indicatorActive : ''
-                                }`}
+                            className={clsx(
+                                styles.indicator,
+                                styles[`indicator--${variant}`],
+                                index === currentIndex && styles.indicatorActive
+                            )}
                             onClick={() => onIndexChange(index)}
-                            aria-label={`View image ${index + 1}`}
+                            aria-label={`${t('viewImage')} ${index + 1}`}
                         />
                     ))}
                 </div>

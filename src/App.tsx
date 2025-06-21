@@ -1,8 +1,17 @@
+import { useState } from 'react'
 import './App.css'
 import { PropertyCard } from './components/PropertyCard'
+import type { Locale } from './i18n/translations'
+import { getLocale, setLocale } from './i18n/translations'
 import type { Property } from './types/property'
 
 function App() {
+  const [locale, setCurrentLocale] = useState<Locale>(getLocale())
+
+  const handleLocaleChange = (newLocale: Locale) => {
+    setLocale(newLocale)
+    setCurrentLocale(newLocale)
+  }
 
   const mockProperty: Property = {
     id: '1',
@@ -45,6 +54,7 @@ function App() {
       showWhatsApp: true,
       showContactSeller: true,
       sellerName: 'Александр',
+      phone: '+7123456789'
     },
     publishedDate: '2 дн. назад',
   }
@@ -65,6 +75,36 @@ function App() {
 
   return (
     <>
+      <div style={{ padding: '20px', textAlign: 'center' }}>
+        <button
+          onClick={() => handleLocaleChange('ru')}
+          style={{
+            padding: '8px 16px',
+            margin: '0 10px',
+            backgroundColor: locale === 'ru' ? '#0066cc' : '#f0f0f0',
+            color: locale === 'ru' ? 'white' : 'black',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer'
+          }}
+        >
+          Русский
+        </button>
+        <button
+          onClick={() => handleLocaleChange('en')}
+          style={{
+            padding: '8px 16px',
+            margin: '0 10px',
+            backgroundColor: locale === 'en' ? '#0066cc' : '#f0f0f0',
+            color: locale === 'en' ? 'white' : 'black',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer'
+          }}
+        >
+          English
+        </button>
+      </div>
       <div>
         <PropertyCard variant="horizontal" isFavorite={false} property={mockPropertyHorizontal} />
       </div>
