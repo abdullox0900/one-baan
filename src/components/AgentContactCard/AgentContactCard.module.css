@@ -1,0 +1,292 @@
+.agentContactCard {
+    border-radius: 10px;
+    padding: 24px 32px 32px 32px;
+    background-color: rgba(113, 128, 150, 0.08);
+    width: 389px;
+}
+
+.agentContactCard__topBox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 32px;
+}
+
+.agentContactCard__topBoxLink {
+    width: 100%;
+    height: 52px;
+    text-align: center;
+    padding: 18px;
+    border-radius: 10px;
+    background-color: #48BB78;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: -0.03em;
+    color: #FFFFFF;
+}
+
+.agentContactCard__topBoxLinkContact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 52px;
+    background-color: #2D3748;
+}
+
+.agentContactCard__bottomBoxContainer {
+    padding: 8px;
+    margin-bottom: 24px;
+
+}
+
+.agentContactCard__bottomBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.agentContactCard__bottomBoxAvatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 60px;
+    width: 120px;
+    height: 120px;
+    background-color: #CBD5E0;
+    font-weight: 500;
+    font-size: 57px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.agentContactCard__bottomBoxInfo {
+    width: 174px;
+}
+
+.agentContactCard__bottomBoxInfoTitle {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 133%;
+    color: #A0AEC0;
+    margin-bottom: 8px;
+}
+
+.agentContactCard__bottomBoxInfoItemName {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 110%;
+    letter-spacing: -0.03em;
+    margin-bottom: 6px;
+}
+
+.agentContactCard__bottomBoxInfoItem {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.agentContactCard__bottomBoxExperience {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.agentContactCard__bottomBoxInfoItemIcon {
+    width: 12px;
+    height: 12px;
+    background-color: #48BB78;
+    border-radius: 50%;
+}
+
+.agentContactCard__bottomBoxExperienceItem {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.agentContactCard__bottomBoxExperienceItem div {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #718096;
+}
+
+.agentContactCard__bottomBoxExperienceItem span {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #2D3748;
+}
+
+.agentContactCard__bottomBoxButton {
+    padding: 10px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 150%;
+    color: #2D3748;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.agentContactCard__bottomBoxInfoTitleTablet {
+    display: none;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: -0.03em;
+    color: #A0AEC0;
+    margin-bottom: 8px;
+}
+
+.agentContactBar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px 12px;
+    background-color: #FFFFFF;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 2px -8px 20px 0 rgba(0, 0, 0, 0.08);
+    z-index: 1000;
+}
+
+.agentContactBar__left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.agentContactBar .agentContactCard__bottomBoxAvatar {
+    width: 52px;
+    height: 52px;
+    font-size: 32px;
+}
+
+.agentContactBar .agentContactCard__bottomBoxInfoItemName {
+    font-size: 18px;
+}
+
+.agentContactBar .agentContactCard__topBox {
+    display: flex;
+    margin-bottom: 0;
+    width: 45%;
+}
+
+@media (max-width: 830px) {
+    .agentContactCard {
+        width: 100%;
+    }
+
+    .agentContactBar {
+        display: flex;
+    }
+
+    .agentContactCard__bottomBoxContainer {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .agentContactCard__bottomBoxInfoTitle {
+        display: none;
+    }
+
+    .agentContactCard__bottomBoxInfoTitleTablet {
+        display: block;
+    }
+
+    .agentContactCard__topBox {
+        display: none;
+    }
+
+    .agentContactCard__bottomBoxAvatar {
+        width: 100px;
+        height: 100px;
+        font-size: 48px;
+    }
+
+    .agentContactCard__bottomBox {
+        margin-bottom: 0;
+    }
+
+    .agentContactCard__bottomBoxButton {
+        background-color: #2D3748;
+        color: #FFFFFF;
+        font-weight: 500;
+    }
+
+    .agentContactCard__bottomBoxExperienceItem div {
+        font-size: 14px;
+    }
+
+    .agentContactCard__bottomBoxExperienceItem span {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 735px) {
+    .agentContactCard__bottomBoxContainer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .agentContactCard__bottomBox {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .agentContactCard {
+        padding: 16px 24px 24px 24px;
+    }
+
+    .agentContactCard__bottomBoxContainer {
+        padding: 4px;
+    }
+
+    .agentContactBar {
+        gap: 8px;
+    }
+
+    .agentContactBar .agentContactCard__topBox {
+        width: 100%;
+    }
+
+
+    .agentContactBar .agentContactCard__bottomBoxInfoItemName {
+        font-size: 14px;
+    }
+
+    .agentContactBar .agentContactBar__left {
+        gap: 8px;
+    }
+
+    .agentContactBar .agentContactBar__leftInfo {
+        width: 110px;
+    }
+}
+
+@media (max-width: 385px) {
+
+    .agentContactCard__bottomBoxInfoItemName {
+        font-size: 16px;
+    }
+
+    .agentContactBar .agentContactCard__bottomBoxAvatar {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .agentContactBar .agentContactCard__topBox a {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,231 @@
+.container {
+    margin: 24px 0 32px 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1A202C;
+    margin: 0;
+}
+
+.filters {
+    display: flex;
+    gap: 12px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.filterButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background-color: #F4F5F7;
+    cursor: pointer;
+    font-size: 14px;
+    color: #4A5568;
+    transition: all 0.2s ease;
+    min-width: 70px;
+}
+
+.filterButton:hover {
+    background-color: #EDF2F7;
+}
+
+.filterButton.active {
+    background-color: #E2E8F0;
+    color: #2D3748;
+    font-weight: 500;
+}
+
+.filterIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4A5568;
+}
+
+.filterArrow {
+    font-size: 10px;
+    margin-left: 4px;
+    transition: transform 0.2s ease;
+}
+
+.filterArrowUp {
+    transform: rotate(180deg);
+}
+
+.dropdownMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 4px;
+    z-index: 100;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    background: #F4F5F7;
+}
+
+.dropdownItem {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    text-align: left;
+    border: none;
+    background: none;
+    font-size: 14px;
+    color: #4A5568;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dropdownItem:hover {
+    background-color: #F7FAFC;
+}
+
+.dropdownItem.active {
+    background-color: #E2E8F0;
+    color: #2D3748;
+    font-weight: 500;
+}
+
+.cardsContainer {
+    position: relative;
+}
+
+.cardsViewport {
+    position: relative;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.cardsWrapper {
+    display: flex;
+    position: relative;
+    gap: 16px;
+    padding-bottom: 24px;
+    width: 800px;
+    overflow-x: auto;
+}
+
+.cardsWrapper::-webkit-scrollbar {
+    height: 6px;
+    background-color: rgba(113, 128, 150, 0.06);
+}
+
+.cardsWrapper::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: rgba(113, 128, 150, 0.2);
+}
+
+.cardItem {
+    flex: 0 0 auto;
+    width: 300px;
+}
+
+.buildingCard {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    width: 100%;
+}
+
+.showMoreButton {
+    display: none;
+    width: 100%;
+    padding: 12px;
+    background-color: #F7FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    color: #4A5568;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.showMoreButton:hover {
+    background-color: #EDF2F7;
+}
+
+.filtersContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+@media (max-width: 830px) {
+    .cardsWrapper {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .dropdownMenu {
+        width: 100%;
+    }
+
+    .cardItem {
+        width: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cardsWrapper {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .showMoreButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-size: 16px;
+        border: 2px solid #2D3748;
+    }
+
+    .cardItem {
+        width: 100%;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .filterButton {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 430px) {
+    .filtersContainer {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .filterButton {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .filters {
+        width: 100%;
+        justify-content: space-between;
+    }
+}

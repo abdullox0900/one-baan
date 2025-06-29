@@ -196,3 +196,9 @@
         height: auto;
     }
 }
+
+@media (max-width: 480px) {
+    .card--horizontal {
+        max-width: 100%;
+    }
+}

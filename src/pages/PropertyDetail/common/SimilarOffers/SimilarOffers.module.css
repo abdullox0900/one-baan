@@ -1,0 +1,177 @@
+.container {
+    margin: 24px 0 32px 0;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1A202C;
+    margin: 0;
+}
+
+.filters {
+    display: flex;
+    gap: 12px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.filterButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background-color: #F4F5F7;
+    cursor: pointer;
+    font-size: 14px;
+    color: #4A5568;
+    transition: all 0.2s ease;
+    min-width: 70px;
+}
+
+.location {
+    display: flex;
+    gap: 8px;
+}
+
+.locationItem {
+    font-size: 14px;
+    color: #4A5568;
+    border-radius: 8px;
+    padding: 8px 12px;
+    background-color: #F4F5F7;
+}
+
+.cardsContainer {
+    position: relative;
+}
+
+.cardsViewport {
+    position: relative;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.cardsWrapper {
+    display: flex;
+    position: relative;
+    gap: 16px;
+    padding-bottom: 24px;
+    width: 800px;
+    overflow-x: auto;
+}
+
+.cardsWrapper::-webkit-scrollbar {
+    height: 6px;
+    background-color: rgba(113, 128, 150, 0.06);
+}
+
+.cardsWrapper::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: rgba(113, 128, 150, 0.2);
+}
+
+.cardItem {
+    flex: 0 0 auto;
+    width: 300px;
+}
+
+.buildingCard {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    width: 100%;
+}
+
+.showMoreButton {
+    display: none;
+    width: 100%;
+    padding: 12px;
+    background-color: #F7FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    color: #4A5568;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.showMoreButton:hover {
+    background-color: #EDF2F7;
+}
+
+.filtersContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+@media (max-width: 830px) {
+    .cardsWrapper {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .dropdownMenu {
+        width: 100%;
+    }
+
+    .cardItem {
+        width: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cardsWrapper {
+        gap: 16px;
+    }
+
+    .showMoreButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-size: 16px;
+        border: 2px solid #2D3748;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .filterButton {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 430px) {
+    .filtersContainer {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .filterButton {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .filters {
+        width: 100%;
+        justify-content: space-between;
+    }
+}

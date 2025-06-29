@@ -1,120 +1,64 @@
-import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import './App.css'
-import { PropertyCard } from './components/PropertyCard'
-import type { Locale } from './i18n/translations'
-import { getLocale, setLocale } from './i18n/translations'
-import type { Property } from './types/property'
+import AgentContactCard from './components/AgentContactCard/AgentContactCard'
+import AmenitiesTags from './components/AmenitiesTags'
+import MapLocationInfoCard from './components/MapLocationInfoCard/MapLocationInfoCard'
+import NotificationSubscribeBox from './components/NotificationSubscribeBox/NotificationSubscribeBox'
+import type { AmenityType } from './types/amenities'
+import { getAmenities } from './utils/amenities'
 
 function App() {
-  const [locale, setCurrentLocale] = useState<Locale>(getLocale())
+  // Example primary amenities (from first image)
+  const primaryAmenities: AmenityType[] = [
+    'furniture',
+    'balcony',
+    'readyToRent',
+    'leasehold',
+    'security',
+    'mountainView'
+  ]
 
-  const handleLocaleChange = (newLocale: Locale) => {
-    setLocale(newLocale)
-    setCurrentLocale(newLocale)
-  }
-
-  const mockProperty: Property = {
-    id: '1',
-    title: 'Апартаменты на продажу в Blue Canyon Golf And Country Club Home',
-    price: 124200000,
-    pricePerSqm: 155200,
-    currency: 'USD',
-    location: 'Пхукет → Бангтао → Апартаменты',
-    images: [
-      {
-        id: '1',
-        url: 'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=800',
-        alt: 'Living room with dining area',
-      },
-      {
-        id: '2',
-        url: 'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=800',
-        alt: 'Modern kitchen',
-      },
-      {
-        id: '3',
-        url: 'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=800',
-        alt: 'Bedroom view',
-      },
-    ],
-    features: {
-      bedrooms: 2,
-      bathrooms: 2,
-      area: 2038,
-      floor: '3/6 этаж',
-      view: 'Вид на горы',
-    },
-    status: {
-      isVerified: true,
-      onlyOnOneBaan: true,
-      specialPrice: true,
-      isFurnished: true,
-    },
-    contact: {
-      showWhatsApp: true,
-      showContactSeller: true,
-      sellerName: 'Александр',
-      phone: '+7123456789'
-    },
-    publishedDate: '2 дн. назад',
-  }
-
-  const mockPropertyHorizontal: Property = {
-    ...mockProperty,
-    id: '2',
-    price: 124200000,
-    pricePerSqm: 155200,
-    location: 'Пхукет → Бангтао',
-    status: {
-      isVerified: true,
-      onlyOnOneBaan: true,
-      specialPrice: true,
-      isFurnished: true,
-    },
-  }
+  // Example secondary amenities (from second image)
+  const secondaryAmenities: AmenityType[] = [
+    'pool',
+    'gym',
+    'kidsClub',
+    'reception',
+    'cctv',
+    'security24h',
+    'keycard',
+    'parking',
+    'restaurant',
+    'garden'
+  ]
 
   return (
     <>
-      <div style={{ padding: '20px', textAlign: 'center' }}>
-        <button
-          onClick={() => handleLocaleChange('ru')}
-          style={{
-            padding: '8px 16px',
-            margin: '0 10px',
-            backgroundColor: locale === 'ru' ? '#0066cc' : '#f0f0f0',
-            color: locale === 'ru' ? 'white' : 'black',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer'
-          }}
-        >
-          Русский
-        </button>
-        <button
-          onClick={() => handleLocaleChange('en')}
-          style={{
-            padding: '8px 16px',
-            margin: '0 10px',
-            backgroundColor: locale === 'en' ? '#0066cc' : '#f0f0f0',
-            color: locale === 'en' ? 'white' : 'black',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer'
-          }}
-        >
-          English
-        </button>
-      </div>
-      <div>
-        <PropertyCard variant="horizontal" isFavorite={false} property={mockPropertyHorizontal} />
-      </div>
-      <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'start', padding: '20px' }}>
-        <PropertyCard variant="small" isFavorite={false} property={mockPropertyHorizontal} />
-        <PropertyCard variant="medium" isFavorite={false} property={mockPropertyHorizontal} />
-        <PropertyCard variant="large" isFavorite={false} property={mockPropertyHorizontal} />
-      </div>
-      <div>
-        <PropertyCard variant="large-horizontal" isFavorite={false} property={mockPropertyHorizontal} />
+      <div className="app-container">
+        <h1>One Baan Demo</h1>
+
+        <div className="navigation">
+          <Link to="/property/123" className="property-link">
+            View Property Detail Page
+          </Link>
+        </div>
+
+        <div className="demo-section">
+          <h2>Amenities Tags Component</h2>
+          <AmenitiesTags amenities={getAmenities(primaryAmenities)} />
+        </div>
+
+        <div className="demo-section">
+          <h2>Compact Amenities Tags</h2>
+          <AmenitiesTags
+            amenities={getAmenities(secondaryAmenities)}
+            isCompact={true}
+          />
+        </div>
+
+        <NotificationSubscribeBox />
+        <MapLocationInfoCard />
+        <AgentContactCard />
       </div>
     </>
   )

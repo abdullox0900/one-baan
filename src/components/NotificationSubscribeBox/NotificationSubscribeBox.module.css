@@ -1,0 +1,227 @@
+.notificationSubscribeBox {
+    padding: 24px 32px;
+    position: relative;
+    overflow: hidden;
+    background-color: #E9D8FD;
+    border-radius: 10px;
+}
+
+.notificationSubscribeBox:before {
+    content: '';
+    width: 218px;
+    height: 178px;
+    background-image: url('../../assets/img/email-notification.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 21px;
+    right: -50px;
+
+}
+
+.notificationSubscribeBox__title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #553C9A;
+    margin-bottom: 16px;
+}
+
+.notificationSubscribeBox__list {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.notificationSubscribeBox__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.notificationSubscribeBox__item p {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 144%;
+    letter-spacing: -0.03em;
+    color: #553C9A;
+}
+
+.notificationSubscribeBox__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 8px;
+    background-color: #fff;
+    color: #553C9A;
+    padding: 13px 24px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 144%;
+    letter-spacing: -0.03em;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+/* Modal Styles */
+.modalContent {
+    padding: 40px 32px;
+    max-width: 580px;
+}
+
+.modalTitle {
+    font-family: 'Manrope', sans-serif;
+    color: #1A202C;
+    margin-bottom: 12px;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 129%;
+    letter-spacing: -0.04em;
+}
+
+.modalDescription {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    font-family: 'Manrope', sans-serif;
+    color: #1A202C;
+    margin-bottom: 48px;
+}
+
+.modalForm {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.modalForm__input {
+    position: relative;
+}
+
+.modalForm__inputIcon {
+    position: absolute;
+    left: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.modalInput {
+    width: 100%;
+    border: 1px solid rgba(113, 128, 150, 0.08);
+    border-radius: 10px;
+    padding: 6px 12px;
+    padding-top: 10px;
+    padding-left: 32px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #A0AEC0;
+    line-height: 144%;
+    letter-spacing: -0.03em;
+    background-color: rgba(113, 128, 150, 0.06);
+    outline: none;
+}
+
+.modalInput::placeholder {
+    color: #A0AEC0;
+    font-size: 18px;
+
+}
+
+.modalSubmitButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #48BB78;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-family: 'Manrope', sans-serif;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .notificationSubscribeBox {
+        padding: 18px 24px;
+    }
+
+    .notificationSubscribeBox:before {
+        width: 150px;
+        height: 150px;
+        top: 0px;
+        right: -20px;
+        background-size: contain;
+    }
+
+    .notificationSubscribeBox__title {
+        font-size: 20px;
+        max-width: 230px;
+        line-height: 120%;
+    }
+
+    .notificationSubscribeBox__item p {
+        font-size: 16px;
+        max-width: 400px;
+    }
+
+    .modalContent {
+        padding: 32px 24px;
+    }
+
+
+    .modalForm__input {
+        position: relative;
+    }
+
+    .modalTitle {
+        font-size: 22px;
+    }
+
+    .modalDescription {
+        font-size: 14px;
+    }
+
+    .modalTitle {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .notificationSubscribeBox:before {
+        width: 69px;
+        height: 52px;
+        top: 16px;
+        right: 24px;
+        background-position: center center;
+    }
+
+    .notificationSubscribeBox__title {
+        margin-bottom: 14px;
+    }
+
+    .notificationSubscribeBox__list {
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+
+    .notificationSubscribeBox__item p {
+        font-size: 16px;
+        line-height: 150%;
+    }
+
+    .notificationSubscribeBox__button {
+        font-size: 16px;
+    }
+}

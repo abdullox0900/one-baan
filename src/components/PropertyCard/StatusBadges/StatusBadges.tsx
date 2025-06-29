@@ -12,6 +12,7 @@ import styles from './StatusBadges.module.css'
 interface StatusBadgesProps {
     status: PropertyStatus
     variant: PropertyCardVariant
+    className?: string
 }
 
 type BadgeType = 'success' | 'primary' | 'warning' | 'info'
@@ -23,7 +24,7 @@ interface Badge {
     type: BadgeType
 }
 
-export const StatusBadges: React.FC<StatusBadgesProps> = ({ status, variant }) => {
+export const StatusBadges: React.FC<StatusBadgesProps> = ({ status, variant, className }) => {
     const badges: Badge[] = []
 
     if (status.isVerified) {
@@ -65,7 +66,7 @@ export const StatusBadges: React.FC<StatusBadgesProps> = ({ status, variant }) =
     if (badges.length === 0) return null
 
     return (
-        <div className={clsx(styles.badges, styles[`badges--${variant}`])}>
+        <div className={clsx(styles.badges, styles[`badges--${variant}`], className)}>
             {badges.map((badge) => (
                 <div
                     key={badge.key}

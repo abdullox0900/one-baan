@@ -1,0 +1,108 @@
+.container {
+    width: 100%;
+    padding: 24px 0 32px 0;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1A202C;
+    margin: 0 0 16px 0;
+}
+
+/* Building info section */
+.buildingInfo {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 16px;
+}
+
+.buildingImageContainer {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.buildingImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.infoList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.infoItem {
+    display: flex;
+    align-items: baseline;
+}
+
+.infoLabel {
+    font-size: 14px;
+    color: #718096;
+    margin-right: 8px;
+    white-space: nowrap;
+}
+
+.infoValue {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2D3748;
+}
+
+/* Amenities list */
+.amenitiesList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.amenity {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background-color: #F7FAFC;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.amenity:hover {
+    background-color: #EDF2F7;
+}
+
+.amenityIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #4A5568;
+}
+
+.amenityName {
+    font-size: 14px;
+    color: #2D3748;
+}
+
+/* Responsive */
+
+@media (max-width: 480px) {
+
+    .title {
+        font-size: 20px;
+    }
+
+    .amenitiesList {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .buildingInfo {
+        gap: 16px;
+    }
+}

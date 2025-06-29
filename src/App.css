@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 * {
     margin: 0;
@@ -7,7 +7,64 @@
 }
 
 body {
-    padding: 40px;
     font-family: 'Nunito', sans-serif;
-    background-color: gray;
+    background-color: #f8f9fa;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #2D3748;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #2D3748;
+}
+
+.navigation {
+    margin: 20px 0 40px;
+}
+
+.property-link {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #4299E1;
+    color: white;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.property-link:hover {
+    background-color: #3182CE;
+}
+
+.demo-section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
